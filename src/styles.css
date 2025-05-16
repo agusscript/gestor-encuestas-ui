@@ -1,12 +1,37 @@
 @import "primeicons/primeicons.css";
 
-body {
-  margin: 0;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
+html {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
 }
 
-html {
-  font-size: 1.2rem;
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: #242424;
+  background-color: #e3f2fd;
+}
+
+.container {
+  max-width: 1080px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 920px) {
+  .container {
+    max-width: 920px;
+    min-width: 920px;
+  }
+}
+
+button:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }
