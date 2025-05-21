@@ -1,0 +1,36 @@
+<div class="container" *ngIf="survey">
+  <h2>{{ survey.title }}</h2>
+  <p class="total">
+    Total de respuestas <span>{{ totalResponses }}</span>
+  </p>
+
+  <div *ngFor="let response of groupedAnswers; let i = index" class="card">
+    <div class="card-header" (click)="toggleCard(i)">
+      <h3>{{ response.label }}</h3>
+      <span class="expand-icon" [class.expanded]="expandedCards[i]">
+        <i
+          class="pi"
+          [ngClass]="expandedCards[i] ? 'pi-chevron-up' : 'pi-chevron-down'"
+        ></i>
+      </span>
+    </div>
+
+    <div class="card-content" [class.expanded]="expandedCards[i]">
+      <div *ngFor="let answer of response.answers" class="question-block">
+        <p class="question">{{ answer.question }}</p>
+
+        <ul
+          *ngIf="
+            answer.type === 'multiple_choice' || answer.type === 'single_choice'
+          "
+        >
+          <li *ngFor="let option of answer.selectedOptions">
+            <span class="pi pi-circle-on"></span>{{ option }}
+          </li>
+        </ul>
+
+        <p *ngIf="answer.type === 'open'">{{ answer.response }}</p>
+      </div>
+    </div>
+  </div>
+</div>
