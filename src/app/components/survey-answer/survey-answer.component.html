@@ -1,0 +1,78 @@
+<div *ngIf="survey" class="survey-container">
+  <h2 class="survey-title">{{ survey.title }}</h2>
+
+  <form [formGroup]="answersForm" (ngSubmit)="onSubmit()">
+    <div formArrayName="answers" class="questions-wrapper">
+      <div
+        *ngFor="let question of survey.questions; let i = index"
+        [formGroupName]="i"
+        class="question-block"
+      >
+        <label class="question-text">{{ question.text }}</label>
+
+        <input
+          *ngIf="question.type === 'open'"
+          pInputText
+          name="response"
+          formControlName="response"
+          class="text-input"
+        />
+
+        <app-error-message
+          message="Este campo es obligatorio"
+          [shouldShow]="
+            question.type === 'open' &&
+            answers.at(i).get('response')?.invalid &&
+            answers.at(i).get('response')?.touched
+          "
+        />
+
+        <div *ngIf="question.type === 'single_choice'" class="option-group">
+          <div class="option-container">
+            <div *ngFor="let option of question.options" class="option-item">
+              <p-radioButton
+                [value]="option"
+                name="response"
+                formControlName="response"
+                inputId="option-{{ i }}-{{ option }}"
+                class="radio-button"
+              ></p-radioButton>
+              <label for="option-{{ i }}-{{ option }}" class="option-label">{{
+                option
+              }}</label>
+            </div>
+          </div>
+          <app-error-message
+            message="Selecciona una opción"
+            [control]="answers.at(i).get('response')"
+          />
+        </div>
+
+        <div *ngIf="question.type === 'multiple_choice'" class="option-group">
+          <div class="option-container">
+            <div *ngFor="let option of question.options" class="option-item">
+              <p-checkBox
+                [value]="option"
+                name="response"
+                formControlName="response"
+                inputId="option-{{ i }}-{{ option }}"
+                class="checkbox"
+              ></p-checkBox>
+              <label for="option-{{ i }}-{{ option }}" class="option-label">{{
+                option
+              }}</label>
+            </div>
+          </div>
+          <app-error-message
+            message="Selecciona al menos una opción"
+            [control]="answers.at(i).get('response')"
+          />
+        </div>
+      </div>
+    </div>
+
+    <button pButton type="submit" class="submit-button">
+      Enviar Respuestas
+    </button>
+  </form>
+</div>

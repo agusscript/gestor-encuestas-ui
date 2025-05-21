@@ -1,0 +1,106 @@
+.survey-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0.5rem 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 20px rgba(0, 0, 0, 0.05),
+    0 6px 6px rgba(0, 0, 0, 0.03);
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  color: #333;
+}
+
+.survey-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.2rem;
+  display: inline-block;
+}
+
+.questions-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.question-block {
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  border: 1px solid #ddd;
+  border-left: 4px solid #3498db;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.question-text {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 1.2rem;
+  color: #34495e;
+  position: relative;
+  padding-left: 0.2rem;
+}
+
+.text-input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  margin-left: 0.2rem;
+}
+
+.option-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 1rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+  user-select: none;
+}
+
+.option-item:hover {
+  background-color: #e9f7fe;
+}
+
+.option-label {
+  cursor: pointer;
+  font-size: 1rem;
+  color: #333;
+  flex: 1;
+}
+
+.checkbox,
+.radio-button {
+  padding-bottom: 0.3rem;
+}
+
+.submit-button {
+  display: block;
+  margin: 2.6rem auto 1.6rem auto;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+}
