@@ -1,0 +1,38 @@
+<div class="success-container">
+  <div class="success-content">
+    <h2>Encuesta creada con éxito</h2>
+    <p>Comparte o utiliza los siguientes enlaces:</p>
+
+    <div class="link-group">
+      <label>Link para responder la encuesta:</label>
+      <div class="link-row">
+        <input
+          pInputText
+          [value]="answerUrl"
+          class="p-inputtext"
+          readonly
+          disabled
+        />
+        <button pButton icon="pi pi-copy" (click)="copyToClipboard(answerUrl)">
+          Copiar
+        </button>
+      </div>
+    </div>
+
+    <div class="link-group">
+      <label>Link para ver resultados:</label>
+      <div class="link-row">
+        <input
+          pInputText
+          [value]="resultsUrl"
+          class="p-inputtext"
+          readonly
+          disabled
+        />
+        <button pButton icon="pi pi-copy" (click)="copyToClipboard(resultsUrl)">
+          Copiar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
