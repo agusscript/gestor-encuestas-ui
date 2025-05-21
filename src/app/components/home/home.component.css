@@ -1,40 +1,165 @@
 .home-container {
+  font-family: "Roboto", "Segoe UI", sans-serif;
+  color: #333;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.hero-section {
   display: flex;
-  justify-content: center;
   align-items: center;
-  min-height: calc(100vh - 60px);
-  padding: 2rem;
+  justify-content: space-between;
+  min-height: 85vh;
+  padding: 2rem 0;
+  gap: 2rem;
 }
 
-.home-content {
-  background-color: #ffffff;
-  padding: 3rem 2rem;
-  border-radius: 16px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
+.hero-content {
+  flex: 1;
   max-width: 600px;
-  width: 100%;
 }
 
-.home-content h1 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: #3f51b5;
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #2c3e50;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
 }
 
-.home-content p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  color: #555;
+h1::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #3498db, #2980b9);
+  border-radius: 2px;
+}
+
+.hero-description {
+  font-size: 1.4rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+  color: #7f8c8d;
 }
 
 .home-actions {
   display: flex;
   gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
-.p-button {
-  min-width: 200px;
+.create-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: #3498db;
+  border-color: #3498db;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.create-button:hover {
+  background-color: #2980b9 !important;
+  border-color: #2980b9 !important;
+  transform: translateY(-3px);
+  box-shadow:
+    0 7px 14px rgba(50, 50, 93, 0.1),
+    0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.surveys-button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #3498db;
+  border-color: #3498db;
+  border-radius: 8px;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.surveys-button:hover {
+  color: #3498db !important;
+  border-color: #3498db !important;
+  background-color: rgba(52, 152, 219, 0.1);
+  transform: translateY(-3px);
+  box-shadow:
+    0 7px 14px rgba(50, 50, 93, 0.1),
+    0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4.5rem;
+}
+
+.home-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid #eee;
+  color: #7f8c8d;
+}
+
+@media (max-width: 992px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+    min-height: auto;
+    padding-top: 3rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+  }
+
+  h1::after {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .home-actions {
+    justify-content: center;
+  }
+
+  .hero-image {
+    margin-top: 3rem;
+  }
+
+  .home-footer {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-description {
+    font-size: 1.2rem;
+  }
+
+  .home-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .create-button,
+  .surveys-button {
+    width: 100%;
+  }
 }

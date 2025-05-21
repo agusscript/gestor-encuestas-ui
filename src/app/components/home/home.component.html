@@ -1,16 +1,38 @@
 <div class="home-container">
-  <div class="home-content">
-    <h1>Gestor de Encuestas</h1>
-    <p>Administra, crea y analiza encuestas fácilmente.</p>
+  <div class="hero-section">
+    <div class="hero-content">
+      <h1>Gestor de Encuestas</h1>
+      <p class="hero-description">
+        Crea, administra y analiza encuestas de forma sencilla y rápida.
+      </p>
 
-    <div class="home-actions">
-      <button
-        pButton
-        label="Crear Encuesta"
-        icon="pi pi-plus"
-        class="p-button-primary"
-        routerLink="/create-survey"
-      ></button>
+      <div class="home-actions">
+        <button
+          pButton
+          label="Crear Encuesta"
+          icon="pi pi-plus"
+          class="p-button-primary create-button"
+          routerLink="/survey/create"
+        ></button>
+        <button
+          pButton
+          label="Ver Encuestas"
+          icon="pi pi-eye"
+          class="p-button-outlined surveys-button"
+        ></button>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <p-image
+        src="assets/undraw-illustration.svg"
+        alt="Survey Illustration"
+        width="385"
+      />
     </div>
   </div>
+
+  <footer class="home-footer">
+    <p>© Trabajo Final Integrador - DAW 2025</p>
+  </footer>
 </div>
