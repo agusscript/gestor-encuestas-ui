@@ -1,0 +1,108 @@
+.container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0.2rem 2rem 2rem 2rem;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 600;
+  width: fit-content;
+  margin-bottom: 2.4rem;
+  color: #2c3e50;
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.2rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.survey-form .p-field {
+  margin-bottom: 1.5rem;
+}
+
+.question-block > div {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  border: 1px solid #ddd;
+  border-left: 4px solid #3498db;
+}
+
+.p-inputgroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.options-input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.p-button-danger {
+  background-color: #f44336;
+}
+
+.p-button-danger:hover {
+  background-color: #d32f2f;
+}
+
+.p-button-secondary {
+  display: block;
+  margin: 1rem auto 0 auto;
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.p-dropdown {
+  font-size: 0.85rem;
+}
+
+.p-inputtext {
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+label {
+  color: #34495e;
+}
+
+button[label="Agregar opción"] {
+  margin-top: 0.5rem;
+}
+
+button[label="Eliminar pregunta"] {
+  margin: auto;
+  display: block;
+  font-size: 0.9rem;
+}
+
+button[label="Agregar pregunta"] {
+  margin: 1rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+button[label="Generar Encuesta"] {
+  margin: 2rem auto 0.3rem auto;
+  display: block;
+  font-weight: bold;
+  padding: 0.6rem 1.2rem;
+}

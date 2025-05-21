@@ -1,0 +1,136 @@
+<div class="container">
+  <h2>Crear Encuesta</h2>
+
+  <form class="survey-form" [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+    <div class="p-field">
+      <label for="title">Título</label>
+      <input
+        id="title"
+        type="text"
+        pInputText
+        formControlName="title"
+        name="title"
+      />
+      <app-error-message
+        [control]="surveyForm.get('title')"
+        message="Este campo es obligatorio"
+      />
+    </div>
+
+    <div
+      class="question-block"
+      formArrayName="questions"
+      *ngIf="questions && questions.length > 0"
+    >
+      <div
+        *ngFor="let question of questions.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="p-field">
+          <label>Texto de la pregunta</label>
+          <input type="text" pInputText formControlName="text" name="text" />
+          <app-error-message
+            message="Este campo es obligatorio"
+            [control]="questions.at(i).get('text')"
+          />
+        </div>
+
+        <div class="p-field dropdown-container">
+          <label>Tipo</label>
+          <p-dropdown
+            formControlName="type"
+            name="type"
+            [options]="questionTypes"
+            optionLabel="label"
+            optionValue="value"
+            placeholder="Selecciona un tipo"
+          ></p-dropdown>
+        </div>
+        <app-error-message
+          message="Debe seleccionar un tipo"
+          [control]="question.get('type')"
+          showWhen="always"
+        />
+
+        <div
+          class="p-field"
+          *ngIf="
+            question.get('type')?.value &&
+            question.get('type')?.value !== 'open'
+          "
+        >
+          <label>Opciones</label>
+          <div formArrayName="options">
+            <div class="options-input-group">
+              <div
+                *ngFor="
+                  let optionCtrl of getOptionsControls(i).controls;
+                  let j = index
+                "
+                class="p-inputgroup"
+              >
+                <input type="text" pInputText [formControlName]="j" />
+                <button
+                  pButton
+                  type="button"
+                  icon="pi pi-trash"
+                  class="p-button-danger"
+                  (click)="removeOption(i, j)"
+                ></button>
+              </div>
+            </div>
+            <app-error-message
+              message="Las opciones no pueden estar vacías"
+              [control]="getOptionsControls(i)"
+            />
+            <button
+              pButton
+              type="button"
+              label="Agregar opción"
+              icon="pi pi-plus"
+              class="p-button-sm"
+              (click)="addOption(i)"
+            ></button>
+            <app-error-message
+              [message]="'Debe haber al menos dos opciones'"
+              [shouldShow]="
+                question.get('type')?.value !== 'open' &&
+                getOptionsControls(i).length < 2 &&
+                getOptionsControls(i).touched
+              "
+            />
+          </div>
+        </div>
+
+        <button
+          pButton
+          type="button"
+          class="p-button-danger"
+          label="Eliminar pregunta"
+          (click)="removeQuestion(i)"
+        ></button>
+      </div>
+    </div>
+
+    <button
+      pButton
+      type="button"
+      label="Agregar pregunta"
+      icon="pi pi-plus"
+      class="p-button-secondary"
+      (click)="addQuestion()"
+    ></button>
+
+    <app-error-message
+      [message]="'La encuesta debe tener al menos una pregunta'"
+      [shouldShow]="questions && questions.length < 1 && questions.touched"
+    />
+
+    <button
+      pButton
+      type="submit"
+      label="Generar Encuesta"
+      class="p-button-success"
+    ></button>
+  </form>
+</div>
