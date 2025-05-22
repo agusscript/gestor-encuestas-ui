@@ -13,6 +13,7 @@ import { RawAnswer, RawSurveyAnswer } from '../../interfaces/raw-survey-answer.i
 import { ErrorMessageComponent } from '../error-message/error-message.component';
 import { CreateAnswersDto } from '../../dtos/request/create-answers.dto';
 import { QuestionType } from '../../enums/question-type.enum';
+import { Question } from '../../interfaces/question.interface';
 
 @Component({
   selector: 'app-survey-answer',
@@ -67,7 +68,7 @@ export class SurveyAnswerComponent implements OnInit {
       next: (survey) => {
         this.survey = survey;
 
-        survey.questions.forEach((question: any) => {
+        survey.questions.forEach((question: Question) => {
           let responseControl;
 
           if (question.type === QuestionType.MULTIPLE_CHOICE) {
