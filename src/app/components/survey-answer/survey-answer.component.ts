@@ -6,7 +6,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ButtonModule } from 'primeng/button';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { SurveyService } from '../../services/survey.service';
 import { Survey } from '../../interfaces/survey.interface';
 import { RawAnswer, RawSurveyAnswer } from '../../interfaces/raw-survey-answer.interface';
@@ -38,6 +38,7 @@ export class SurveyAnswerComponent implements OnInit {
   route = inject(ActivatedRoute);
   surveyService = inject(SurveyService);
   messageService = inject(MessageService);
+  confirmationService = inject(ConfirmationService);
   router = inject(Router);
 
   participationId = this.route.snapshot.paramMap.get('participationId') ?? '';
@@ -108,6 +109,18 @@ export class SurveyAnswerComponent implements OnInit {
       return;
     }
 
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que deseas enviar estas respuestas?',
+      header: 'Confirmar Respuestas',
+      icon: 'pi pi-question-circle',
+      acceptLabel: 'Enviar',
+      rejectLabel: 'Cancelar',
+      rejectButtonStyleClass: 'p-button-secondary',
+      accept: () => this.submitAnswers(),
+    });
+  }
+
+  private submitAnswers(): void {
     const payload: CreateAnswersDto = this.mapAnswersPayload();
 
     this.surveyService.submitAnswers(payload).subscribe({
