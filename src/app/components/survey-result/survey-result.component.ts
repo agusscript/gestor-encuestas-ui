@@ -1,9 +1,10 @@
-import { SurveyVisualizationResponseDto } from '../../dtos/response/survey-visualization-response.dto';
+import { QuestionResponseDto, SurveyVisualizationResponseDto } from '../../dtos/response/survey-visualization-response.dto';
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SurveyService } from '../../services/survey.service';
 import { ActivatedRoute } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { AnswerVisualization } from '../../interfaces/answer-visualization.interface';
 
 @Component({
   selector: 'app-survey-result',
@@ -14,7 +15,7 @@ import { MessageService } from 'primeng/api';
 })
 export class SurveyResultComponent implements OnInit {
   survey: SurveyVisualizationResponseDto | null = null;
-  groupedAnswers: any[] = [];
+  groupedAnswers: AnswerVisualization[] = [];
   expandedCards: boolean[] = [];
 
   surveyService = inject(SurveyService);
@@ -53,18 +54,18 @@ export class SurveyResultComponent implements OnInit {
     this.expandedCards[index] = !this.expandedCards[index];
   }
 
-  private groupAnswersByIndex(questions: any[]) {
-    const responseCount = questions[0]?.answers.length || 0;
-    const grouped: any[] = [];
+  private groupAnswersByIndex(questions: QuestionResponseDto[]) {
+    const responseCount = questions[0]?.answers?.length || 0;
+    const grouped: AnswerVisualization[] = [];
 
     for (let i = 0; i < responseCount; i++) {
       const answers = questions.map((q) => {
-        const answer = q.answers[i];
+        const answer = q.answers?.[i];
         return {
           question: q.text,
           type: q.type,
-          response: answer.text,
-          selectedOptions: answer.selectedOptions
+          response: answer?.text,
+          selectedOptions: answer?.selectedOptions
         };
       });
 

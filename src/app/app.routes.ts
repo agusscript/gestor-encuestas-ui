@@ -3,7 +3,7 @@ import { HomeComponent } from './components/home/home.component';
 import { CreateSurveyComponent } from './components/survey-create/survey-create.component';
 import { SurveyAnswerComponent } from './components/survey-answer/survey-answer.component';
 import { SurveySuccessComponent } from './components/survey-success/survey-success.component';
-import { SurveyResultComponent } from './components/survey-result/survey-results.component';
+import { SurveyResultComponent } from './components/survey-result/survey-result.component';
 
 export const routes: Routes = [
   {
