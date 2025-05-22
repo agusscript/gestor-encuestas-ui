@@ -5,7 +5,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { SurveyService } from '../../services/survey.service';
-import { MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 import { atLeastOneQuestionValidator, atLeastTwoOptionsValidator } from '../../validators/create-survey.validator';
 import { ErrorMessageComponent } from "../error-message/error-message.component";
 import { questionTypeOptions } from '../../enums/question-type.enum';
@@ -33,6 +33,7 @@ export class CreateSurveyComponent implements OnInit {
   formBuilder = inject(FormBuilder);
   surveyService = inject(SurveyService);
   messageService = inject(MessageService);
+  confirmationService = inject(ConfirmationService);
   router = inject(Router);
 
   ngOnInit(): void {
@@ -91,6 +92,18 @@ export class CreateSurveyComponent implements OnInit {
       return;
     }
 
+    this.confirmationService.confirm({
+      message: '¿Estás seguro de que deseas crear esta encuesta?',
+      header: 'Confirmar Encuesta',
+      icon: 'pi pi-question-circle',
+      acceptLabel: 'Crear',
+      rejectLabel: 'Cancelar',
+      rejectButtonStyleClass: 'p-button-secondary',
+      accept: () => this.createSurvey(),
+    });
+  }
+
+  private createSurvey(): void {
     const payload: CreateSurveyDto = this.surveyForm.value;
 
     this.surveyService.create(payload).subscribe({
