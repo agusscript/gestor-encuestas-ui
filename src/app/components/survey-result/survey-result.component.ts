@@ -2,14 +2,15 @@ import { QuestionResponseDto, SurveyVisualizationResponseDto } from '../../dtos/
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SurveyService } from '../../services/survey.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AnswerVisualization } from '../../interfaces/answer-visualization.interface';
+import { ButtonModule } from 'primeng/button';
 
 @Component({
   selector: 'app-survey-result',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonModule, RouterModule],
   templateUrl: './survey-result.component.html',
   styleUrl: './survey-result.component.css',
 })
@@ -21,6 +22,7 @@ export class SurveyResultComponent implements OnInit {
   surveyService = inject(SurveyService);
   messageService = inject(MessageService);
   route = inject(ActivatedRoute);
+  router = inject(Router);
 
   ngOnInit(): void {
     const visualizationId = this.route.snapshot.paramMap.get('visualizationId');
@@ -80,5 +82,24 @@ export class SurveyResultComponent implements OnInit {
 
   get totalResponses(): number {
     return this.groupedAnswers.length;
+  }
+
+  redirectToStatisticPage() {
+    const visualizationId = this.survey?.visualizationId;
+
+    if (!visualizationId) {
+      this.messageService.add({
+        severity: 'error',
+        summary: 'Error',
+        detail: 'ID de visualización inválido'
+      });
+      return;
+    }
+
+    this.router.navigate([
+      '/survey/statistic',
+      this.survey?.id,
+      visualizationId
+    ]);
   }
 }

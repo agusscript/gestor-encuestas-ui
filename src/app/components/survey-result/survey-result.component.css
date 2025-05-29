@@ -15,11 +15,17 @@ h2 {
   display: inline-block;
 }
 
+.result-header {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  margin-bottom: 2rem;
+}
+
 .total {
   width: fit-content;
   font-size: 1.1rem;
   color: #7f8c8d;
-  margin-bottom: 2rem;
   padding: 0.5rem 1rem;
   background-color: #f8f9fa;
   border-radius: 4px;
