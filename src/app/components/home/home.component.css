@@ -48,12 +48,6 @@ h1::after {
   color: #7f8c8d;
 }
 
-.home-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
 .create-button {
   padding: 1rem 2rem;
   font-size: 1.1rem;
@@ -129,10 +123,6 @@ h1::after {
     transform: translateX(-50%);
   }
 
-  .home-actions {
-    justify-content: center;
-  }
-
   .hero-image {
     margin-top: 3rem;
   }
@@ -151,11 +141,6 @@ h1::after {
 
   .hero-description {
     font-size: 1.2rem;
-  }
-
-  .home-actions {
-    flex-direction: column;
-    width: 100%;
   }
 
   .create-button,
