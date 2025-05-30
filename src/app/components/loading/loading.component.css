@@ -1,0 +1,31 @@
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+.loading-content {
+  text-align: center;
+  color: #6c757d;
+}
+
+.loading-text {
+  margin: 0;
+  padding-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #495057;
+}
+
+.pi-spinner {
+  color: #3498db;
+}
+
+.loading-container.small {
+  min-height: 100px;
+}
+
+.loading-container.large {
+  min-height: 400px;
+}
