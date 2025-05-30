@@ -95,9 +95,4 @@
   </div>
 </div>
 
-<div *ngIf="!survey" class="loading-container">
-  <div class="loading-content">
-    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
-    <p>Cargando estadísticas...</p>
-  </div>
-</div>
+<app-loading *ngIf="!survey" message="Cargando estadísticas..."></app-loading>

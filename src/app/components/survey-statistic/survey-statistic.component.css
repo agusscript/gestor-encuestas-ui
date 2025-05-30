@@ -163,20 +163,3 @@
   margin: 0;
   font-style: italic;
 }
-
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 400px;
-}
-
-.loading-content {
-  text-align: center;
-  color: #6c757d;
-}
-
-.loading-content p {
-  margin-top: 1rem;
-  font-size: 1.1rem;
-}

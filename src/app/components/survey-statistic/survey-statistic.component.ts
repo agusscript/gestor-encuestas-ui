@@ -14,6 +14,7 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { SurveyService } from '../../services/survey.service';
 import { QuestionType } from '../../enums/question-type.enum';
 import { ChartData, OptionStatistic, QuestionStatistics } from '../../interfaces/statistics.interface';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-survey-statistics',
@@ -24,7 +25,8 @@ import { ChartData, OptionStatistic, QuestionStatistics } from '../../interfaces
     ChartModule,
     TableModule,
     TagModule,
-    ProgressBarModule
+    ProgressBarModule,
+    LoadingComponent
   ],
   templateUrl: './survey-statistic.component.html',
   styleUrl: './survey-statistic.component.css'
