@@ -1,0 +1,103 @@
+<div class="statistics-container" *ngIf="survey">
+  <div class="header-section">
+    <h1 class="survey-title">{{ survey.title }}</h1>
+    <p class="subtitle">Estadísticas y análisis de resultados</p>
+    <p-tag
+      [value]="totalResponses + ' respuestas totales'"
+      severity="success"
+      icon="pi pi-chart-bar"
+    >
+    </p-tag>
+  </div>
+
+  <div class="questions-grid">
+    <p-card
+      *ngFor="let stats of questionStatistics; let i = index"
+      class="question-card"
+    >
+      <div class="question-header">
+        <div class="question-meta">
+          <h3 class="question-text">{{ stats.question }}</h3>
+          <p-tag
+            [value]="stats.type | titlecase"
+            severity="info"
+            class="question-type"
+          >
+          </p-tag>
+        </div>
+      </div>
+
+      <div *ngIf="stats.type !== 'open'" class="choice-statistics">
+        <div class="charts-container">
+          <div class="chart-section">
+            <h4 class="chart-title">Distribución de respuestas</h4>
+            <p-chart
+              type="bar"
+              [data]="getBarChartData(stats)"
+              [options]="barChartOptions"
+              height="300px"
+            >
+            </p-chart>
+          </div>
+
+          <div class="chart-section">
+            <h4 class="chart-title">
+              {{
+                stats.type === "multiple_choice"
+                  ? "Distribución por opción"
+                  : "Porcentajes"
+              }}
+            </h4>
+            <p-chart
+              type="pie"
+              [data]="getPieChartData(stats)"
+              [options]="pieChartOptions"
+              height="300px"
+            >
+            </p-chart>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="stats.type === 'open'">
+        <div
+          class="text-responses"
+          *ngIf="stats.textResponses && stats.textResponses.length > 0"
+        >
+          <div
+            *ngFor="
+              let response of stats.textResponses.slice(0, 10);
+              let idx = index
+            "
+            class="response-item"
+          >
+            <div class="response-number">{{ idx + 1 }}</div>
+            <div class="response-text">"{{ response }}"</div>
+          </div>
+
+          <div *ngIf="stats.textResponses.length > 10" class="more-responses">
+            <p class="more-text">
+              Y {{ stats.textResponses.length - 10 }} respuestas más...
+            </p>
+          </div>
+        </div>
+
+        <div
+          *ngIf="!stats.textResponses || stats.textResponses.length === 0"
+          class="no-responses"
+        >
+          <p class="no-responses-text">
+            No hay respuestas de texto para esta pregunta.
+          </p>
+        </div>
+      </div>
+    </p-card>
+  </div>
+</div>
+
+<div *ngIf="!survey" class="loading-container">
+  <div class="loading-content">
+    <i class="pi pi-spin pi-spinner" style="font-size: 2rem"></i>
+    <p>Cargando estadísticas...</p>
+  </div>
+</div>
