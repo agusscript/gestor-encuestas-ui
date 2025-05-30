@@ -14,6 +14,7 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
 import { CreateAnswersDto } from '../../dtos/request/create-answers.dto';
 import { QuestionType } from '../../enums/question-type.enum';
 import { Question } from '../../interfaces/question.interface';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-survey-answer',
@@ -25,7 +26,8 @@ import { Question } from '../../interfaces/question.interface';
     RadioButtonModule,
     CheckboxModule,
     ButtonModule,
-    ErrorMessageComponent
+    ErrorMessageComponent,
+    LoadingComponent
   ],
   templateUrl: './survey-answer.component.html',
   styleUrl: './survey-answer.component.css'
