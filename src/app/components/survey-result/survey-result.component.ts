@@ -6,11 +6,17 @@ import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AnswerVisualization } from '../../interfaces/answer-visualization.interface';
 import { ButtonModule } from 'primeng/button';
+import { LoadingComponent } from '../loading/loading.component';
 
 @Component({
   selector: 'app-survey-result',
   standalone: true,
-  imports: [CommonModule, ButtonModule, RouterModule],
+  imports: [
+    CommonModule,
+    ButtonModule,
+    RouterModule,
+    LoadingComponent
+  ],
   templateUrl: './survey-result.component.html',
   styleUrl: './survey-result.component.css',
 })
