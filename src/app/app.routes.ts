@@ -4,6 +4,7 @@ import { CreateSurveyComponent } from './components/survey-create/survey-create.
 import { SurveyAnswerComponent } from './components/survey-answer/survey-answer.component';
 import { SurveySuccessComponent } from './components/survey-success/survey-success.component';
 import { SurveyResultComponent } from './components/survey-result/survey-result.component';
+import { SurveyStatisticComponent } from './components/survey-statistic/survey-statistic.component';
 
 export const routes: Routes = [
   {
@@ -26,6 +27,10 @@ export const routes: Routes = [
   {
     path: 'survey/result/:id/:visualizationId',
     component: SurveyResultComponent,
+  },
+  {
+    path: 'survey/statistic/:id/:visualizationId',
+    component: SurveyStatisticComponent,
   },
   {
     path: '**',
