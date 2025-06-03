@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
-
+import { NgxQrcodeStylingComponent } from 'ngx-qrcode-styling';
 @Component({
   selector: 'app-survey-success',
   standalone: true,
@@ -12,7 +12,8 @@ import { MessageService } from 'primeng/api';
     CommonModule,
     RouterModule,
     ButtonModule,
-    InputTextModule
+    InputTextModule,
+    NgxQrcodeStylingComponent
   ],
   templateUrl: './survey-success.component.html',
   styleUrl: './survey-success.component.css',
