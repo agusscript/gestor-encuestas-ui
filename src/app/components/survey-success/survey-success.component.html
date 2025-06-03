@@ -16,6 +16,13 @@
         <button pButton icon="pi pi-copy" (click)="copyToClipboard(answerUrl)">
           Copiar
         </button>
+        <ngx-qrcode-styling
+        [template]="'default'"
+        [data]="answerUrl"
+        [width]="90"
+        [height]="90"
+        [qrOptions]="{ errorCorrectionLevel: 'L' }"
+      ></ngx-qrcode-styling>
       </div>
     </div>
 
@@ -32,6 +39,13 @@
         <button pButton icon="pi pi-copy" (click)="copyToClipboard(resultsUrl)">
           Copiar
         </button>
+        <ngx-qrcode-styling
+        [template]="'default'"
+        [data]="resultsUrl"
+        [width]="90"
+        [height]="90"
+        [qrOptions]="{ errorCorrectionLevel: 'L' }"
+      ></ngx-qrcode-styling>
       </div>
     </div>
   </div>
