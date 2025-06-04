@@ -1,7 +1,7 @@
-<app-loading *ngIf="loading"></app-loading>
+<app-loading *ngIf="loading" message="Cargando encuestas..."></app-loading>
 <app-error-message *ngIf="error" [message]="error"></app-error-message>
 
-<div *ngIf="!loading && !error">
+<div class="container" *ngIf="!loading && !error">
   <h2>Encuestas disponibles</h2>
 
   <div *ngIf="surveys.length === 0">
@@ -12,9 +12,15 @@
     <h3>{{ survey.title }}</h3>
 
     <div class="button-group">
-      <button pButton label="Responder" (click)="goToSurvey(survey)"></button>
       <button
         pButton
+        class="p-button-primary"
+        label="Responder"
+        (click)="goToSurvey(survey)"
+      ></button>
+      <button
+        pButton
+        class="p-button-primary"
         label="Ver Resultados"
         (click)="goToResults(survey)"
       ></button>
