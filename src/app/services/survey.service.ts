@@ -38,4 +38,10 @@ export class SurveyService {
       `${this.apiUrl}/answer`, data
     );
   }
+
+  findAll(): Observable<CreateSurveyResponseDto[]> {
+    return this.http.get<CreateSurveyResponseDto[]>(
+      `${this.apiUrl}/survey`
+    );
+  }
 }
