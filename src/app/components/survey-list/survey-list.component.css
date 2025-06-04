@@ -27,18 +27,20 @@ p {
 .survey-card {
   background-color: #fff;
   border-radius: 10px;
-  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 600px;
   padding: 1.5rem 2rem;
   margin-bottom: 1.8rem;
   text-align: center;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .survey-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
 }
 
 .survey-card h3 {
@@ -61,7 +63,9 @@ button[pButton] {
   border-radius: 8px;
   border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 button[pButton]:first-child {

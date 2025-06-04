@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
 import { NgxQrcodeStylingComponent } from 'ngx-qrcode-styling';
+
 @Component({
   selector: 'app-survey-success',
   standalone: true,

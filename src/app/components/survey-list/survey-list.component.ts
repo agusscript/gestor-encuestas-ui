@@ -18,7 +18,7 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
     ErrorMessageComponent
   ],
   templateUrl: './survey-list.component.html',
-  styleUrls: ['./survey-list.component.css']
+  styleUrl: './survey-list.component.css'
 })
 export class SurveyListComponent implements OnInit {
   surveys: CreateSurveyResponseDto[] = [];

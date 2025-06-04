@@ -15,6 +15,12 @@ export class SurveyService {
   private apiUrl = 'http://localhost:4200/api/v1';
   private http = inject(HttpClient);
 
+  findAll(): Observable<CreateSurveyResponseDto[]> {
+    return this.http.get<CreateSurveyResponseDto[]>(
+      `${this.apiUrl}/survey`
+    );
+  }
+
   findOneByParticipationId(id: string): Observable<SurveyParticipationResponseDto> {
     return this.http.get<SurveyParticipationResponseDto>(
       `${this.apiUrl}/survey/participation/${id}`
@@ -36,12 +42,6 @@ export class SurveyService {
   submitAnswers(data: CreateAnswersDto): Observable<CreateAnswerResponseDto[]> {
     return this.http.post<CreateAnswerResponseDto[]>(
       `${this.apiUrl}/answer`, data
-    );
-  }
-
-  findAll(): Observable<CreateSurveyResponseDto[]> {
-    return this.http.get<CreateSurveyResponseDto[]>(
-      `${this.apiUrl}/survey`
     );
   }
 }
