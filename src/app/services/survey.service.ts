@@ -7,6 +7,7 @@ import { CreateSurveyDto } from '../dtos/request/create-survey.dto';
 import { CreateSurveyResponseDto } from '../dtos/response/create-survey-response.dto';
 import { CreateAnswersDto } from '../dtos/request/create-answers.dto';
 import { CreateAnswerResponseDto } from '../dtos/response/create-answer-response.dto';
+import { Survey } from '../interfaces/survey.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +16,8 @@ export class SurveyService {
   private apiUrl = 'http://localhost:4200/api/v1';
   private http = inject(HttpClient);
 
-  findAll(): Observable<CreateSurveyResponseDto[]> {
-    return this.http.get<CreateSurveyResponseDto[]>(
+  findAll(): Observable<Survey[]> {
+    return this.http.get<Survey[]>(
       `${this.apiUrl}/survey`
     );
   }

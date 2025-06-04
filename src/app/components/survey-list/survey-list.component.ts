@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule, Router } from '@angular/router';
 import { SurveyService } from '../../services/survey.service';
-import { CreateSurveyResponseDto } from '../../dtos/response/create-survey-response.dto';
 import { LoadingComponent } from '../loading/loading.component';
 import { ErrorMessageComponent } from '../error-message/error-message.component';
+import { Survey } from '../../interfaces/survey.interface';
 
 @Component({
   selector: 'app-survey-list',
@@ -21,8 +21,8 @@ import { ErrorMessageComponent } from '../error-message/error-message.component'
   styleUrl: './survey-list.component.css'
 })
 export class SurveyListComponent implements OnInit {
-  surveys: CreateSurveyResponseDto[] = [];
-  loading = false;
+  surveys: Survey[] = [];
+  loading: boolean = false;
   error: string | null = null;
 
   private surveyService = inject(SurveyService);
@@ -46,13 +46,13 @@ export class SurveyListComponent implements OnInit {
     });
   }
 
-  goToSurvey(survey: CreateSurveyResponseDto) {
-    const { id, participationId, visualizationId } = survey;
+  goToSurvey(survey: Survey) {
+    const { id, participationId } = survey;
     this.router.navigate([`/survey/answer`, id, participationId]);
   }
 
-  goToResults(survey: CreateSurveyResponseDto) {
-    const { id, participationId, visualizationId } = survey;
+  goToResults(survey: Survey) {
+    const { id, visualizationId } = survey;
     this.router.navigate([`/survey/result`, id, visualizationId]);
   }
 }
