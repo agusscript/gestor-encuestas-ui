@@ -16,13 +16,6 @@
         <button pButton icon="pi pi-copy" (click)="copyToClipboard(answerUrl)">
           Copiar
         </button>
-        <ngx-qrcode-styling
-        [template]="'default'"
-        [data]="answerUrl"
-        [width]="90"
-        [height]="90"
-        [qrOptions]="{ errorCorrectionLevel: 'L' }"
-      ></ngx-qrcode-styling>
       </div>
     </div>
 
@@ -39,14 +32,32 @@
         <button pButton icon="pi pi-copy" (click)="copyToClipboard(resultsUrl)">
           Copiar
         </button>
-        <ngx-qrcode-styling
-        [template]="'default'"
-        [data]="resultsUrl"
-        [width]="90"
-        [height]="90"
-        [qrOptions]="{ errorCorrectionLevel: 'L' }"
-      ></ngx-qrcode-styling>
       </div>
     </div>
+
+    <button
+      pButton
+      icon="pi pi-qrcode"
+      label="Compartir Encuesta"
+      class="p-button-secondary"
+      (click)="showQrDialog = true"
+    ></button>
   </div>
 </div>
+
+<p-dialog
+  header="Código QR"
+  [(visible)]="showQrDialog"
+  [modal]="true"
+  [closable]="true"
+  [dismissableMask]="true"
+  contentStyleClass="qr-dialog-content"
+>
+  <ngx-qrcode-styling
+    [template]="'default'"
+    [data]="answerUrl"
+    [width]="240"
+    [height]="240"
+    [qrOptions]="{ errorCorrectionLevel: 'L' }"
+  ></ngx-qrcode-styling>
+</p-dialog>

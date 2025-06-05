@@ -5,6 +5,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { MessageService } from 'primeng/api';
 import { NgxQrcodeStylingComponent } from 'ngx-qrcode-styling';
+import { DialogModule } from 'primeng/dialog';
 
 @Component({
   selector: 'app-survey-success',
@@ -14,7 +15,8 @@ import { NgxQrcodeStylingComponent } from 'ngx-qrcode-styling';
     RouterModule,
     ButtonModule,
     InputTextModule,
-    NgxQrcodeStylingComponent
+    NgxQrcodeStylingComponent,
+    DialogModule
   ],
   templateUrl: './survey-success.component.html',
   styleUrl: './survey-success.component.css',
@@ -25,6 +27,8 @@ export class SurveySuccessComponent implements OnInit {
   visualizationId!: string;
   answerUrl!: string;
   resultsUrl!: string;
+  showQrDialog: boolean = false;
+
   route = inject(ActivatedRoute);
   messageService = inject(MessageService);
 
