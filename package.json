@@ -4,6 +4,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "deploy": "npm run build && npm run nginx:clean && npm run nginx:fill",
+    "nginx:clean": "rm -rf /usr/share/nginx/html/*",
+    "nginx:fill": "cp -r dist/gestor-encuestas-ui/* /usr/share/nginx/html/",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
