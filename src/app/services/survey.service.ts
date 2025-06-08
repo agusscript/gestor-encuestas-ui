@@ -13,7 +13,7 @@ import { Survey } from '../interfaces/survey.interface';
   providedIn: 'root',
 })
 export class SurveyService {
-  private apiUrl = 'http://localhost:4200/api/v1';
+  private apiUrl = '/api/v1';
   private http = inject(HttpClient);
 
   findAll(): Observable<Survey[]> {
